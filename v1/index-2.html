@@ -830,6 +830,7 @@ const progress=document.querySelector('.progress-track span');
 const prev=document.getElementById('prev'),next=document.getElementById('next');
 const deck=document.querySelector('.deck');
 const interactive=[...document.querySelectorAll('.tile,.big-card,.cell,.sum-col,.step,.plan,.offer-main,.expert,.panel')];
+const isMobileView=()=>matchMedia('(max-width:760px)').matches;
 let i=0,wheelLock=false;
 function fit(){
   const p=document.querySelector('.stage');
@@ -861,6 +862,7 @@ addEventListener('keydown',e=>{
 });
 addEventListener('resize',fit);
 addEventListener('wheel',e=>{
+  if(isMobileView())return;
   if(Math.abs(e.deltaY)<18||wheelLock)return;
   e.preventDefault();
   wheelLock=true;
